@@ -222,7 +222,7 @@ function check_user() {
 							localStorage.photo_url=photo_url;
 							localStorage.photo_submit_url=photo_submit_url;
 							
-							localStorage.cid='LSCRM';
+							localStorage.cid='GPSME';
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
 							localStorage.synced='NO'
