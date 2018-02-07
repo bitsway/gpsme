@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.yeapps.gpsme"
-        version   = "4.0.19">
+        id        = "com.yeapps.pharma-rx"
+        version   = "4.0.20">
 
-    <name>GPSME</name>
+    <name>Retailer Mapping</name>
 
     <description>
-       GPSME
+        Retailer Mapping
     </description>
 
     <author href="www.yeapps.com" email="sabbir456@gmail.com">
