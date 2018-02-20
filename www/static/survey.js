@@ -3998,7 +3998,7 @@ function visitReport(){
 						
 						
 						//------------------------
-						var salesStrData='<tr ><td colspan="2" ><b>LSC Sales:</b></td></tr>'
+						var salesStrData='<tr ><td colspan="2" ><b>Sales:</b></td></tr>'
                 		salesStrData+='<tr style="font-weight:bold; text-shadow:none; color:#408080;" ><td >Month</td><td >Qty</td></tr>'
                 		
 						var deliverySalesListLength=deliverySalesList.length;						
