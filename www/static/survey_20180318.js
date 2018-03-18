@@ -1,6 +1,6 @@
 
 var apipath_base_photo_dm='http://w02.yeapps.com/gpsme/syncmobile3/dmpath?CID=LSCRM&HTTPPASS=e99business321cba'
-//var apipath_base_photo_dm='http://127.0.0.1:8000/gpsme/syncmobile3/dmpath?CID=LSCRM&HTTPPASS=e99business321cba'
+//var apipath_base_photo_dm='http://127.0.0.1:8000/lscmreporting/syncmobile3/dmpath?CID=LSCRM&HTTPPASS=e99business321cba'
 
 var url =''
 var mobile_off_flag=0;
@@ -2681,13 +2681,9 @@ function prifileInfoNext(){
 	var cp_kidsinfo=$("#cp_kidsinfo").val();
 	var cp_hobby=$("#cp_hobby").val();
 	var cp_trade_license=$("#cp_trade_license").val();
-	var cp_trade_licence_no=0;
-	var cp_vat_registration=0;
+	var cp_trade_licence_no=$("#cp_trade_licence_no").val();
+	var cp_vat_registration=$("#cp_vat_registration").val();
 	var cp_vat_reg_no=$("#cp_vat_reg_no").val();
-	
-	//alert(cp_name+'-'+cp_address+'-'+cp_marketid+'-'+cp_contact1+'-'+cp_contact2+'-'+cp_owner_name+'-'+cp_nid+'-'+cp_Passport+'-'+cp_dob+'-'+cp_dom+'-'+cp_kidsinfo+'-'+cp_trade_license+'-'+cp_trade_licence_no+'-'+cp_vat_registration+'-'+cp_vat_reg_no);
-	
-	
 	
 	var cp_manager_name=$("#cp_manager_name").val();
 	var cp_manager_cont_no=$("#cp_manager_cont_no").val();
@@ -2704,52 +2700,48 @@ function prifileInfoNext(){
 	var cp_barge_number=$("#cp_barge_number").val();
 	var cp_status=$("#cp_status").val();
 	var districtThana=$("#districtThana").val();
-	//alert(cp_manager_name +'-'+cp_manager_cont_no+'-'+cp_starting_year+'-'+cp_Category+'-'+cp_lsc_covered+'-'+cp_monthly_sales_capacity+'-'+cp_monthly_sales+'-'+cp_shop_rent_own+'-'+cp_warehouse_capacity+'-'+cp_shop_size+'-'+cp_shop_front_size+'-'+cp_truck_number+'-'+cp_barge_number+'-'+cp_status+'-'+districtThana);
 	
-	/*var mustFlag=true;
+	var mustFlag=true;
 	if(cp_id==''){
-		$("#err_profile_next_cp").html('ID Required');
+		$("#err_profile_next_cp").html('Retailer ID Required');
 		mustFlag=false;
 	}else if(cp_name==''|| cp_name=='None'){
-		$("#err_profile_next_cp").html('Company Name Required');
-		mustFlag=false;*/
-	/*}else if(cp_marketid=='' || cp_marketid=='None'){
+		$("#err_profile_next_cp").html('Retailer Name Required');
+		mustFlag=false;
+	}else if(cp_marketid=='' || cp_marketid=='None'){
 		$("#err_profile_next_cp").html('Retailer Market Required');
-		mustFlag=false;*/
-	/*}else if(cp_contact1=='' || cp_contact1=='None'){
-		$("#err_profile_next_cp").html('Contact1 Required');
+		mustFlag=false;
+	}else if(cp_contact1=='' || cp_contact1=='None'){
+		$("#err_profile_next_cp").html('Retailer Contact1 Required');
 		mustFlag=false;
 	}else if(districtThana=='' || districtThana==undefined){
-		$("#err_profile_next_cp").html('Select Operator');
+		$("#err_profile_next_cp").html('Retailer District-Thana Required');
 		mustFlag=false;
 	}else if(cp_Category==''){
-		$("#err_profile_next_cp").html('Select Business Type');
+		$("#err_profile_next_cp").html('Retailer Category Required');
 		mustFlag=false;
 	}else if(cp_lsc_covered==''){
-		$("#err_profile_next_cp").html('Select Yes/No -Interested in SME');
-		mustFlag=false;*/
-		
-	/*}else if(cp_shop_rent_own==''){
+		$("#err_profile_next_cp").html('Retailer LSC Covered? Required');
+		mustFlag=false;
+	}else if(cp_shop_rent_own==''){
 		$("#err_profile_next_cp").html('Retailer Shop Rented/Own Required');
-		mustFlag=false;*/
-	/*}else if(cp_status==''){
+		mustFlag=false;
+	}else if(cp_status==''){
 		$("#err_profile_next_cp").html('Retailer Status Required');
-		mustFlag=false;*/
-	/*}else if(cp_owner_name==''){
-		$("#err_profile_next_cp").html(' Name Required');
-		mustFlag=false;*/
-		
-		
-	/*}else if(cp_trade_license==''){
-		$("#err_profile_next_cp").html('Select Yes/No');
+		mustFlag=false;
+	}else if(cp_owner_name==''){
+		$("#err_profile_next_cp").html('Retailer Owner Name Required');
+		mustFlag=false;
+	}else if(cp_trade_license==''){
+		$("#err_profile_next_cp").html('Retailer Trade License Required');
 		mustFlag=false;
 	}else if(cp_vat_registration==''){
-		$("#err_profile_next_cp").html('Select Yes/No');
+		$("#err_profile_next_cp").html('Retailer Vat Registration Required');
 		mustFlag=false;
-	};*/
+	};
 	
 	
-	/*if(mustFlag==false){
+	if(mustFlag==false){
 		mustFlag=false;
 	}else{
 		var distThanaList=districtThana.split('-');		
@@ -2996,19 +2988,19 @@ function prifileInfoNext(){
 																//--------- condition
 																if(cp_barge_numberFlag==false){
 																	$("#err_profile_next_cp").html('Invalid Barge Number');	
-																}else{*/
+																}else{
 																	//==============
 																	
-																	clientUpdateStr=cp_id+'<fd>'+cp_name+'<fd>'+cp_address+'<fd>'+cp_marketid+'<fd>'+cp_contact1+'<fd>'+cp_contact2+'<fd>'+cp_owner_name+'<fd>'+cp_nid+'<fd>'+cp_Passport+'<fd>'+cp_dob+'<fd>'+cp_dom+'<fd>'+cp_kidsinfo+'<fd>'+cp_hobby+'<fd>'+cp_trade_license+'<fd>'+cp_trade_licence_no+'<fd>'+cp_vat_registration+'<fd>'+cp_vat_reg_no+'<fd>'+cp_manager_name+'<fd>'+cp_manager_cont_no+'<fd>'+cp_starting_year+'<fd>'+cp_Category+'<fd>'+cp_lsc_covered+'<fd>'+cp_monthly_sales_capacity+'<fd>'+cp_monthly_sales+'<fd>'+cp_shop_rent_own+'<fd>'+cp_warehouse_capacity+'<fd>'+cp_shop_size+'<fd>'+cp_shop_front_size+'<fd>'+cp_truck_number+'<fd>'+cp_barge_number+'<fd>'+cp_status+'<fd>'+districtThana//+'<fd>'+thana+'<fd>'+district
-																	
-																	//alert(clientUpdateStr);
+																	clientUpdateStr=cp_id+'<fd>'+cp_name+'<fd>'+cp_address+'<fd>'+cp_marketid+'<fd>'+cp_contact1+'<fd>'+cp_contact2+'<fd>'+
+																	cp_owner_name+'<fd>'+cp_nid+'<fd>'+cp_Passport+'<fd>'+cp_dob+'<fd>'+cp_dom+'<fd>'+cp_kidsinfo+'<fd>'+cp_hobby+'<fd>'+cp_trade_license+'<fd>'+cp_trade_licence_no+'<fd>'+cp_vat_registration+'<fd>'+cp_vat_reg_no+'<fd>'+
+																	cp_manager_name+'<fd>'+cp_manager_cont_no+'<fd>'+cp_starting_year+'<fd>'+cp_Category+'<fd>'+cp_lsc_covered+'<fd>'+cp_monthly_sales_capacity+'<fd>'+cp_monthly_sales+'<fd>'+cp_shop_rent_own+'<fd>'+cp_warehouse_capacity+'<fd>'+cp_shop_size+'<fd>'+cp_shop_front_size+'<fd>'+cp_truck_number+'<fd>'+cp_barge_number+'<fd>'+cp_status+'<fd>'+thana+'<fd>'+district
 																	
 																	url = "#page_confirm_profile_update";
 																	$.mobile.navigate(url);
 																	//alert(clientUpdateStr);																	
 																	
 																	//===============
-													/*}//Barge (Number)
+													}//Barge (Number)
 												}//Truck (Number)
 											 }//Shop Front Size
 											}//Shop Size
@@ -3021,7 +3013,7 @@ function prifileInfoNext(){
 				}	//		NID		
 			  }	//contact 2		
 			}	//contact 1
-		}//must value*/
+		}//must value
 		
 	}//function
 	
