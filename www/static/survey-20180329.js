@@ -22,13 +22,9 @@ function onSuccess(position) {
 	$("#lat_complain").val(position.coords.latitude);
 	$("#long_complain").val(position.coords.longitude);
 	
-	$("#lat_p_insert").val(position.coords.latitude);
-	$("#long_p_insert").val(position.coords.longitude);
-	
 	$("#checkLocation").html('Location Confirmed');
 	$("#checkLocationProfileUpdate").html('Location Confirmed');
 	$("#checkLocationComplain").html('Location Confirmed');	
-	$("#checkLocationProfileInsert").html('Location Confirmed');
 }
 
 function onError(error) {
@@ -41,13 +37,10 @@ function onError(error) {
 	$("#lat_complain").val(0);
 	$("#long_complain").val(0);
 	
-	$("#lat_p_insert").val(0);
-	$("#long_p_insert").val(0);
-	
 	$("#checkLocation").html('Location not found');
 	$("#checkLocationProfileUpdate").html('Location not found');
 	$("#checkLocationComplain").html('Location not found');
-	$("#checkLocationProfileInsert").html('Location not found');
+	
 	}
 
 // -------------- If Not synced, Show login
@@ -260,15 +253,13 @@ function check_user() {
 													localStorage.marchandizingItem=resultArray[4];
 													localStorage.distributorListStr=resultArray[5];								
 													localStorage.brand_list_string=resultArray[6];
-													//alert(localStorage.distributorListStr);
+													
 													localStorage.complain_type_string=resultArray[7];
 													localStorage.complain_from_string=resultArray[8];
 													localStorage.complain_delivered_from_string=resultArray[9];
 													localStorage.task_type_string=resultArray[10];													
 													fieldforce_string=resultArray[11];
 													region_string=resultArray[12];
-													//localStorage.distAreaListStr=resultArray[13];
-													
 													
 													var productList=localStorage.productListStr.split('<rd>');
 													var productLength=productList.length;
@@ -342,8 +333,7 @@ function check_user() {
 														var distributorValueArray = distributorList[i].split('<fd>');
 														distributorID=distributorValueArray[0];
 														distributorName=distributorValueArray[1];
-														distributorArea=distributorValueArray[2];
-														var distributorNameID=distributorName+'-'+distributorID+'-'+distributorArea;
+														var distributorNameID=distributorName+'-'+distributorID;
 														if (distributorID!=''){
 															deliveryDistributorCombo+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="distributorNextLV(\''+distributorNameID+'\')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+distributorNameID+'</a></li>';
 															unscheduleDistributorComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="unscheduledDistributorNextLV(\''+distributorNameID+'\')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+distributorNameID+'</a></li>';
@@ -2421,273 +2411,6 @@ function distributorRetailerNextCProfile() {
 			 });//end ajax
 		}
 }
-
-//profile_insert
-function distributorRetailerNextCProfileInsert (){
-		//alert(localStorage.base_url+'getClientProfileInsert?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
-		$.ajax({
-				 type: 'POST',
-				 url: localStorage.base_url+'getClientProfileInsert?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,
-				 success: function(result) {
-						
-						//alert(result);
-						if (result==''){					
-							$("#err_m_retailer_next_cp").text('Sorry Network not available');
-							$("#wait_image_profile_distributor_ret").hide();		
-										
-						}else{					
-							var resultArray = result.split('<SYNCDATA>');			
-							if (resultArray[0]=='FAILED'){						
-								$("#err_m_retailer_next_cp").html(resultArray[1]);
-								$("#wait_image_profile_distributor_ret").hide();		
-															
-							}else if (resultArray[0]=='SUCCESS'){
-														
-								var clientCatStr=resultArray[1];
-								var clientThanaStr=resultArray[2];
-								
-								
-								/*var distArea_string=localStorage.distAreaListStr;
-								var distAreaList = distArea_string.split('<rd>');
-								var distAreaListShowLength=distAreaList.length
-								var areaOptions='';
-								for (var i=0; i < distAreaListShowLength; i++){
-									var distAreaValueArray = distAreaList[i].split('<fd>');
-									dist_area=distAreaValueArray[2];
-									if(dist_area!=''){
-										areaOptions+='<option value="'+dist_area+'" >'+dist_area+'</option>';
-									}
-								}*/
-									//alert(areaOptions);	
-									
-								
-								//------------------ Client Category
-								var clientCatStrList=clientCatStr.split('<fd>')								
-								var clientCatStrListLength=clientCatStrList.length									
-								
-								var cp_categoryOptions='';							
-								for (var k=0; k < clientCatStrListLength; k++){
-									var clientCatID = clientCatStrList[k]									
-									if(clientCatID!=''){
-										cp_categoryOptions+='<option value="'+clientCatID+'" >'+clientCatID+'</option>';
-										}								
-								}
-								
-								//------------------ Client Thana
-								var clientThanaStrList=clientThanaStr.split('<fd>')								
-								var clientThanaStrListLength=clientThanaStrList.length									
-								//var ob2 = $("#cp_Category");
-								var cp_thanaOptions='';							
-								for (var m=0; m < clientThanaStrListLength; m++){
-									var clientDistThana = clientThanaStrList[m]									
-									if(clientDistThana!=''){
-										cp_thanaOptions+='<option value="'+clientDistThana+'" >'+clientDistThana+'</option>';
-										}								
-								}
-								
-								
-								//------------------------------------------
-								/*var area_ob=$("#area");
-								area_ob.empty();	
-								var area=areaOptions;							
-								area_ob.append(area);*/
-								
-								
-								var districtThana_ob=$("#current_operator");
-								districtThana_ob.empty();	
-								var cp_thanaOptions=cp_thanaOptions;							
-								districtThana_ob.append(cp_thanaOptions);	
-								//districtThana_ob.val(current_operator);
-								
-								//--------------------------------
-								var cp_trade_license_ob=$("#interestedGpSme");
-								cp_trade_license_ob.empty();
-								var cp_trade_licenseOption='<option value="" >Select</option><option value="YES" >YES</option><option value="NO" >NO</option>';
-								cp_trade_license_ob.append(cp_trade_licenseOption);	
-								//cp_trade_license_ob.val(cp_trade_license);
-								
-								var cp_vat_registration_ob=$("#sales_confirmation");
-								cp_vat_registration_ob.empty();
-								var cp_vat_registration_obOption='<option value="" >Select</option><option value="YES" >YES</option><option value="NO" >NO</option>';
-								cp_vat_registration_ob.append(cp_vat_registration_obOption);	
-								//cp_vat_registration_ob.val(cp_vat_registration);
-								
-								var cp_Category_ob=$("#business_type");
-								cp_Category_ob.empty();
-								var cp_Category_obOption=cp_categoryOptions;
-								cp_Category_ob.append(cp_Category_obOption);	
-								//cp_Category_ob.val(business_type);
-								
-								var cp_lsc_covered_ob=$("#using_sme_connection");
-								cp_lsc_covered_ob.empty();
-								var cp_lsc_covered_obOption='<option value="" >Select</option><option value="YES" >YES</option><option value="NO" >NO</option>';
-								cp_lsc_covered_ob.append(cp_lsc_covered_obOption);	
-								//cp_lsc_covered_ob.val(cp_lsc_covered);
-								
-								//--------------------------------
-								$("#wait_image_profile_distributor_ret").hide();			
-								$("#err_m_retailer_next_cp").text("");
-								
-								url = "#profile_insert";
-								$.mobile.navigate(url);
-								
-								//-----------------------	
-								//area_ob.selectmenu("refresh");	
-								districtThana_ob.selectmenu("refresh");					
-								cp_trade_license_ob.selectmenu("refresh");
-								cp_vat_registration_ob.selectmenu("refresh");
-								cp_Category_ob.selectmenu("refresh");
-								cp_lsc_covered_ob.selectmenu("refresh");
-								
-								//------------------------------------------
-							}else{						
-								$("#err_m_retailer_next_cp").html('Server Error');	
-								$("#wait_image_profile_distributor_ret").hide();
-							}
-						}
-					  },
-				  error: function(result) {			  
-					  $("#err_m_retailer_next_cp").html('Invalid Request');
-					  $("#wait_image_profile_distributor_ret").hide();
-				  }
-			 });//end ajax
-		}
-	
-	
-	
-	//url="#profile_insert";
-	//$.mobile.navigate(url);
-
-var clientInsertStr;
-function prifileInfoNextInsert(){
-	var distributor_nameId=$("#profile_distributor_cmb_id").val();
-		//alert(distributor_nameId);
-	var distributorNameId=distributor_nameId.split('-');
-	var distributor_Name=distributorNameId[0];
-	var distributor_Id=distributorNameId[1];
-	var distributor_area=distributorNameId[2];
-	
-	var company_name=$("#company_name").val();
-	company_name=company_name.replace('&',' and ');
-	var company_address=$("#company_address").val();
-	company_address=company_address.replace('&',' and ');
-	var company_contact1=$("#company_contact1").val();
-	var company_contact2=$("#company_contact2").val();	
-	var contact_person=$("#contact_person").val();
-	var mobile_no=$("#mobile_no").val();
-	var numberOf_employee=$("#numberOf_employee").val();
-	var business_type=$("#business_type").val();
-	var using_sme_connection=$("#using_sme_connection").val();
-	var current_operator=$("#current_operator").val();
-	var interestedGpSme=$("#interestedGpSme").val();
-	var sales_confirmation=$("#sales_confirmation").val();
-	var quantity=$("#quantity").val();
-	var delivery_date=$("#delivery_date").val();
-	var next_visit_date=$("#next_visit_date").val();
-	var req_any_client=$("#req_any_client").val();
-	var area=$("#area").val();
-	
-	clientInsertStr =company_name+'<fd>'+company_address+'<fd>'+company_contact1+'<fd>'+company_contact2+'<fd>'+contact_person+'<fd>'+mobile_no+'<fd>'+numberOf_employee+'<fd>'+business_type+'<fd>'+using_sme_connection+'<fd>'+current_operator+'<fd>'+interestedGpSme+'<fd>'+sales_confirmation+'<fd>'+quantity+'<fd>'+delivery_date+'<fd>'+next_visit_date+'<fd>'+req_any_client+'<fd>'+distributor_Id+'<fd>'+distributor_Name+'<fd>'+distributor_area;
-	
-	url="#page_confirm_profile_insert";
-	$.mobile.navigate(url);
-}
-
-
-function lscProfileInsert(){
-	$("#errorConfirmProfileInsert").html('');	
-	var lat=$("#lat_p_insert").val();
-	var long=$("#long_p_insert").val();
-	//var client_id=$("#cp_id").val();
-	
-	var lscPhotoProfile=$("#lscPhotoProfile_insert").val();	
-	var imageName=20180327+'.jpg'
-	
-	//Check Photo
-	var imageUploadFlag=0;
-	if (lscPhotoProfile!=''){
-		imageUploadFlag=1;
-	}
-	
-	//Check Latlong
-	var latLongFlag=1;
-	if (imageUploadFlag==1){
-		if (lat=='' || lat==0 || long=='' || long==0){			
-			latLongFlag=0;
-		}
-	}
-	
-	
-	/*if (latLongFlag==0){
-		$("#errorConfirmProfileUpdate").html('Location not Confirmed');		
-	}else{*/
-		
-		if (clientInsertStr==''){
-			$("#errorConfirmProfileInsert").html('Data not available');		
-		}else{
-			$("#btn_profile_insert").hide();
-			$("#wait_image_profile_insert").show();		
-			
-			
-			//alert(localStorage.base_url+'insertClientProfile?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_data='+encodeURI(clientInsertStr)+'&lat='+lat+'&long='+long+'&profile_photo_name='+imageName+'&profile_photo_str=abc&imageUploadFlag='+imageUploadFlag)
-			// ajax-------
-			$.ajax({
-				 type: 'POST',
-				 url: localStorage.base_url+'insertClientProfile?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_data='+encodeURI(clientInsertStr)+'&lat='+lat+'&long='+long+'&profile_photo_name='+imageName+'&profile_photo_str=abc&imageUploadFlag='+imageUploadFlag,
-				 success: function(result) {
-						
-						//alert(result);
-						if (result==''){					
-							$("#errorConfirmProfileInsert").html('Sorry Network not available');
-							$("#wait_image_profile_insert").hide();		
-							$("#btn_profile_insert").show();
-							
-						}else{					
-							var resultArray = result.split('<SYNCDATA>');			
-							if (resultArray[0]=='FAILED'){						
-								$("#errorConfirmProfileInsert").html(resultArray[1]);
-								$("#wait_image_profile_insert").hide();		
-								$("#btn_profile_insert").show();
-								
-							}else if (resultArray[0]=='SUCCESS'){								
-								//-----------
-								clientInsertStr=''
-								$("#lat_p_insert").val('');
-								$("#long_p_insert").val('');								
-								$("#lscPhotoProfile_insert").val('');
-								//$("#myImageProfile").src='';								
-    							document.getElementById('myImageProfile_insert').src = '';
-								
-								$("#wait_image_profile_insert").hide();		
-								$("#btn_profile_insert").show();
-								
-								//image upload function		
-								if(imageUploadFlag==1){
-									uploadPhotoProfileInsert(lscPhotoProfile, imageName);								
-								}						
-								
-								//----
-								url = "#page_profile_insert_success";	
-								$.mobile.navigate(url);
-								
-							}else{						
-								$("#errorConfirmProfileInsert").html('Server Error');
-								$("#wait_image_profile_insert").hide();		
-								$("#btn_profile_insert").show();
-								}
-						}
-					  },
-				  error: function(result) {			  
-					  $("#errorConfirmProfileInsert").html('Invalid Request');
-					  $("#wait_image_profile_insert").hide();		
-					  $("#btn_profile_insert").show();
-				  }
-			 });//end ajax	
-			
-		}
-	//}//check location
-  }
-
 
 
 //--------------------------------- Client Profile: retailer next
@@ -5230,24 +4953,6 @@ function onFailV(message) {
     alert('Failed because: ' + message);
 }
 
-//image Profile insert
-function getImageProfile_insert() {	
-	navigator.camera.getPicture(onSuccessProfileInsert, onFailProfileInsert, { quality: 50,
-	targetWidth: 300,
-	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
-}
-function onSuccessProfileInsert(imageURI) {
-    var image = document.getElementById('myImageProfile_insert');
-    image.src = imageURI;
-	imagePath = imageURI;
-	$("#lscPhotoProfile_insert").val(imagePath);
-}
-function onFailProfileInsert(message) {
-	imagePath="";
-    alert('Failed because: ' + message);
-}
-
-
 //image Profile
 function getImageProfile() {	
 	navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 50,
@@ -5264,7 +4969,6 @@ function onFailProfile(message) {
 	imagePath="";
     alert('Failed because: ' + message);
 }
-
 
 //image Complain
 function getImageComplain() {	
@@ -5319,31 +5023,6 @@ function failV(error) {
 }
 
 //------------------------------------------------------------------------------
-//File upload 
-function uploadPhotoProfileInsert(imageURI, imageName) {
-    var options = new FileUploadOptions();
-    options.fileKey="upload";
-    options.fileName=imageName;
-    options.mimeType="image/jpeg";
-	
-    var params = {};
-    params.value1 = "test";
-    params.value2 = "param";
-	
-    options.params = params;
-	options.chunkedMode = false;
-	
-    var ft = new FileTransfer();
-     ft.upload(imageURI, encodeURI(localStorage.photo_submit_url+"fileUploaderProfile/"),winProfileInsert,failProfileInsert,options);
-}
-
-function winProfileInsert(r) {
-}
-
-function failProfileInsert(error) {
-	$(".errorConfirmProfileInsert").text('Memory Error. Please take new picture and Submit');
-}
-
 //File upload 
 function uploadPhotoProfile(imageURI, imageName) {
     var options = new FileUploadOptions();

@@ -66,9 +66,6 @@
 		$("#wait_image_profile_update").hide();		
 		$("#btn_profile_update").show();
 		
-		$("#wait_image_profile_insert").hide();		
-		$("#btn_profile_insert").show();
-		
 		
 		$("#wait_image_visit_plan_distributor").hide();	
 		
@@ -889,15 +886,16 @@
             <div data-theme="c" data-role="header" data-position="fixed">
 			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>
-                <h3>Customer</h3>
+                <h3>Retailer</h3>
             </div>
 			
             <div data-role="content" style="margin-top:0px; padding-top:0px;">            	
-            	<div ><font style="font-weight:bold; font-size:13px; color:#666">Profile > Distributor > Customer</font></div><br>
+            	<div ><font style="font-weight:bold; font-size:13px; color:#666">Profile > Distributor > Retailer</font></div><br>
 				
                 
 				<div id="err_m_retailer_next_cp" style="color:#C00"></div>
-				
+				                
+                                
                 <ul data-role="listview" data-inset="true">					
 					<li style="background-color:#F2F2F2;">										
 						<!--<div style="width:auto">Market :<span class="market"></span></div> -->
@@ -906,8 +904,7 @@
 				</ul>
                 						
                 <!-- List view-------------------->
-                <input  id="profile_client_id" data-type="search" placeholder="Search">	
-                <a onClick="distributorRetailerNextCProfileInsert()" style="float:right;" ><strong style="font-size:20px; ">+</strong> Add Client</a><br>	
+                <input  id="profile_client_id" data-type="search" placeholder="Search">		
                 <ul id="profile_client_id_lv" data-role="listview" data-filter="true" data-input="#profile_client_id" data-inset="true">
                 </ul>                
                 <!-- List ---->
@@ -1004,142 +1001,7 @@
 			
 		 </div><!--/page-->
 
-<!--=========================== Profile Insert =============-->
-<div data-theme="c" data-role="page" id="profile_insert">
-  <div data-theme="c" data-role="header" data-position="fixed">
-    <a data-role="button" data-rel="back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>
-     <h3>Profile</h3>
-  </div>
-  
-  <div data-role="content"> 
-  	
-    <div align="right" width="100%" height="150px" ><!--<img src="" width="100%" height="150px" alt="Shop Photo" id="clientProfileImage">--></div>
-    
-  	<ul data-inset="true"  data-role="listview">
-        <li>
-            <!--<div><b>Market :</b> <span class="prof_market_class"></span></div>-->
-            <div><b>Distributor :</b> <span class="prof_distributor_class"></span></div>
-            <!--<div><b>Retailer ID :</b> <span class="prof_retailer_class" style="font-weight:bold"></span></div>-->
-        </li>
-    </ul>
-    
-    <table width="100%">
-    	<tbody bgcolor="#BFDFDF">
-        <!--<tr>
-          <td width="30%" class="prof_label">Area</td>
-          <td>
-            <select name="area" id="area" data-native-menu="false">
-                <option value="" >Select</option>            
-            </select>
-          </td>
-        </tr>-->
-        
-    	<tr style="border-color: #F33">
-    	  <td width="30%" class="prof_label" style="border-color: #F33;">Company Name<!--<font color="#C40000" style="font-size:20px">*</font>--></td><td><input type="text" name="" id="company_name"  value=""></td></tr>
-        <tr>
-          <td width="30%" class="prof_label">Company Address</td><td><input type="text" name="" id="company_address"  value=""></td></tr>        
-        <tr><td width="30%" class="prof_label">Contact 1</td><td><input type="text" name="" id="company_contact1"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Contact 2</td><td><input type="text" name="" id="company_contact2"  value=""></td></tr>
-        
-        </tbody>
-        
-        <tbody bgcolor="#BFDFDF">
-        <tr>
-          <td width="30%" class="prof_label">Contact Person</td><td><input type="text" name="" id="contact_person"  value=""></td></tr>
-        <tr>
-          <td width="30%" class="prof_label">Mobile No</td><td><input type="number" name="" id="mobile_no"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Number of Employee</td><td><input type="number" name="" id="numberOf_employee"  value=""></td></tr>
-        <tr>
-          <td width="30%" class="prof_label">Business Type</td><td>
-        <select name="business_type" id="business_type" data-native-menu="false">
-            <option value="" >Select</option>            
-        </select>
-        </td></tr>
-        <tr>
-          <td width="30%" class="prof_label">Using SME Connections ?</td><td>
-        <select name="using_sme_connection" id="using_sme_connection" data-native-menu="false">
-            <option value="" >Select</option>
-            <option value="YES" >YES</option>
-            <option value="NO" >NO</option>
-        </select>
-        </td></tr>
-        <tr>
-        	<td>Current Operator</td>
-        	<td>
-            	<select name="current_operator" id="current_operator" data-native-menu="false">
-                    <option value="" >Select</option>            
-                </select>
-            </td>
-        </tr>
-        <tr><td width="30%" class="prof_label">Interested to GP SME</td><td>
-        <select name="interestedGpSme" id="interestedGpSme" data-native-menu="false">
-            <option value="" >Select</option>
-            <option value="YES" >YES</option>
-            <option value="NO" >NO</option>
-        </select>
-        </td></tr>
-        <tr><td width="30%" class="prof_label">Sales Confirmation</td><td>
-        <select name="sales_confirmation" id="sales_confirmation" data-native-menu="false">
-            <option value="" >Select</option>
-            <option value="YES" >YES</option>
-            <option value="NO" >NO</option>
-        </select>
-        </td></tr>
-        <tr><td width="30%" class="prof_label">Quantity</td><td><input type="number" name="" id="quantity"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Delivery Date</td><td><input type="date" name="" id="delivery_date"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr><td width="30%" class="prof_label">Next Visit Date</td><td><input type="date" name="" id="next_visit_date"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr><td width="30%" class="prof_label">Requirement if Any by Client</td><td><input type="text" name="" id="req_any_client"  value=""></td></tr>
-                     
-    	</tbody>
-        
-  	</table>
-  	<br>
-	<br>
-
-	<a  data-role="button" onClick="prifileInfoNextInsert();" >Next</a>	
-    
-    <br>
-	<div id="err_profile_next_cp" style="color:#C00"></div><br>
-    <br>
-    <br>
-	<br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>    
-  </div>
-</div>
-
-
-<div data-theme="c" data-role="page" id="page_confirm_profile_insert" >
-		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
-			<a data-role="button" data-rel="back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-right" data-transition="slide">Back</a>
-			<h3>Confirm Insert</h3>
-	  </div>
-		<div data-role="content">
-			<div id="errorConfirmProfileInsert" style="color:#C00"></div>
-			
-			<a data-role="button" onClick="getImageProfile_insert();" >Take Picture</a>
-			<img src="" width="128" height="128" alt="" id="myImageProfile_insert">
-			<input name="lscPhotoProfile_insert" id="lscPhotoProfile_insert" type="hidden" value="">
-            
-			<input type="hidden" name="lat_p_insert" id="lat_p_insert" readonly>
-			<input type="hidden" name="long_p_insert" id="long_p_insert" readonly>
-            
-			<a data-role="button" onClick="getLocationInfo();" >Confirm Location</a>
-			<div id="checkLocationProfileInsert" style="color:#FF0000;"></div>
-			<br/><br/>		
-            	
-			<a data-role="button" id="btn_profile_insert" onClick="lscProfileInsert();" >Submit</a>            
-            <div align="center"><img id="wait_image_profile_insert" style="" width="50px;" src="loading.gif" alt=""></div>			
-		</div>
-		
-		<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" ></div>
-	</div>
-
-<!--end Profile Insert-->
+<!--=========================== Profile =============-->
 <style>
 .prof_label{	
 	font-size:13px
@@ -1169,15 +1031,15 @@
         <input type="hidden" name="" id="cp_id"  value="" style="background-color:#EAEAEA" readonly>
         
     	<tr style="border-color: #F33">
-    	  <td width="30%" class="prof_label" style="border-color: #F33;">Company Name</td><td><input type="text" name="" id="cp_name"  value=""></td></tr>
+    	  <td width="30%" class="prof_label" style="border-color: #F33;">Company Name<font color="#C40000" style="font-size:20px">*</font></td><td><input type="text" name="" id="cp_name"  value=""></td></tr>
         <tr>
           <td width="30%" class="prof_label">Company Address</td><td><input type="text" name="" id="cp_address"  value=""></td></tr>        
-        <tr><td width="30%" class="prof_label">Contact 1</td><td><input type="text" name="" id="cp_contact1"  value="8801713454218"></td></tr>
+        <tr><td width="30%" class="prof_label">Contact 1<font color="#C40000" style="font-size:20px">*</font></td><td><input type="text" name="" id="cp_contact1"  value="8801713454218"></td></tr>
         <tr><td width="30%" class="prof_label">Contact 2</td><td><input type="text" name="" id="cp_contact2"  value="01713454218"></td></tr>
         
         </tbody>
         
-        <tbody bgcolor="#BFDFDF">
+        <tbody bgcolor="#DAF3F3">
         <!--<tr style="background-color:#CCC"><td colspan="2"><strong>Shop Info:</strong></td></tr>-->
         <tr>
           <td width="30%" class="prof_label">Contact Person</td><td><input type="text" name="" id="cp_manager_name"  value=""></td></tr>
@@ -1185,13 +1047,13 @@
           <td width="30%" class="prof_label">Mobile No</td><td><input type="number" name="" id="cp_manager_cont_no"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Number of Employee</td><td><input type="number" name="" id="cp_starting_year"  value=""></td></tr>
         <tr>
-          <td width="30%" class="prof_label">Business Type</td><td>
+          <td width="30%" class="prof_label">Business Type<font color="#C40000" style="font-size:20px">*</font></td><td>
         <select name="cp_Category" id="cp_Category" data-native-menu="false">
             <option value="" >Select</option>            
         </select>
         </td></tr>
         <tr>
-          <td width="30%" class="prof_label">Using SME Connections ?</td><td>
+          <td width="30%" class="prof_label">Using SME Connections ?<font color="#C40000" style="font-size:20px">*</font></td><td>
         <select name="cp_lsc_covered" id="cp_lsc_covered" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
@@ -1206,7 +1068,7 @@
                 </select>
             </td>
         </tr>
-        <tr><td width="30%" class="prof_label">Interested to GP SME</td><td>
+        <tr><td width="30%" class="prof_label">Interested to GP SME)<font color="#C40000" style="font-size:20px">*</font></td><td>
         <select name="cp_trade_license" id="cp_trade_license" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
@@ -1220,7 +1082,7 @@
         </select>-->
         <input type="hidden" name="" id="cp_shop_rent_own"  value="">
         </td></tr>
-        <tr><td width="30%" class="prof_label">Sales Confirmation</td><td>
+        <tr><td width="30%" class="prof_label">Sales Confirmation<font color="#C40000" style="font-size:20px">*</font></td><td>
         <select name="cp_vat_registration" id="cp_vat_registration" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
@@ -1230,7 +1092,7 @@
         <tr><td width="30%" class="prof_label">Quantity</td><td><input type="number" name="" id="cp_monthly_sales_capacity"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Delivery Date</td><td><input type="date" name="" id="cp_dob"  value="" placeholder="YYYY-MM-DD"></td></tr>
         <tr><td width="30%" class="prof_label">Next Visit Date</td><td><input type="date" name="" id="cp_dom"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr><td width="30%" class="prof_label">Requirement if Any by Client</td><td><input type="text" name="" id="cp_owner_name"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">Requirement if Any by Client<font color="#CC0000" style="font-size:20px">*</font></td><td><input type="text" name="" id="cp_owner_name"  value=""></td></tr>
         
         <tr><!--<td width="30%" class="prof_label">Monthly Sales</td>--><td><input type="hidden" name="" id="cp_monthly_sales"  value=""></td></tr>
         
@@ -1249,7 +1111,7 @@
         </td></tr>               
     	</tbody>
         
-        <tbody bgcolor="#BFDFDF">        
+        <tbody bgcolor="#EAEBCF">        
         <!--<tr style="background-color:#CCC"><td colspan="2"><strong>Personal Info:</strong></td></tr>-->
         
         <tr><!--<td width="30%" class="prof_label">NID</td>--><td><input type="hidden" name="" id="cp_nid"  value=""></td></tr>
@@ -1329,25 +1191,6 @@
         	<div>Profile Updated Successfully</div>
         	
             <a data-role="button" href="#page_distributor_clprofile" >Another Profile</a>
-			<br/>
-			<a data-role="button" href="#pageHome" >Home</a>
-			
-		</div>
-		
-		<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" ></div>
-	</div>
-    
-    
-<!-- ------------- Profile Insert Success -------------------- -->
-	<div data-theme="c" data-role="page" id="page_profile_insert_success" >
-		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
-			<h3>Success</h3>
-	  </div>
-		<div data-role="content">
-        	<div>Profile Insert Successfully</div>
-        	
-            <a data-role="button" href="#page_distributor_ret_cprofile" >Another Profile</a>
 			<br/>
 			<a data-role="button" href="#pageHome" >Home</a>
 			
