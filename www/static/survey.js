@@ -2600,8 +2600,9 @@ function lscProfileInsert(){
 	var long=$("#long_p_insert").val();
 	//var client_id=$("#cp_id").val();
 	
+	var tempTime = $.now();	
 	var lscPhotoProfile=$("#lscPhotoProfile_insert").val();	
-	var imageName=20180327+'.jpg'
+	var imageName=tempTime.toString()+".jpg";
 	
 	//Check Photo
 	var imageUploadFlag=0;
