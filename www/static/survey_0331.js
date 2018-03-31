@@ -2582,7 +2582,7 @@ function prifileInfoNextInsert(){
 	var interestedGpSme=$("#interestedGpSme").val();
 	var sales_confirmation=$("#sales_confirmation").val();
 	var quantity=$("#quantity").val();
-	var delivery_date=$("#delivery_date_com").val();
+	var delivery_date=$("#delivery_date").val();
 	var next_visit_date=$("#next_visit_date").val();
 	var req_any_client=$("#req_any_client").val();
 	var area=$("#area").val();
