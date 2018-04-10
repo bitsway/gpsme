@@ -2571,8 +2571,8 @@ function prifileInfoNextInsert(){
 	company_name=company_name.replace('&',' and ');
 	var company_address=$("#company_address").val();
 	company_address=company_address.replace('&',' and ');
-	var company_contact1=0;//$("#company_contact1").val();
-	var company_contact2=0;//$("#company_contact2").val();	
+	var company_contact1=$("#company_contact1").val();
+	var company_contact2=$("#company_contact2").val();	
 	var contact_person=$("#contact_person").val();
 	var mobile_no=$("#mobile_no").val();
 	var numberOf_employee=$("#numberOf_employee").val();
@@ -2587,30 +2587,11 @@ function prifileInfoNextInsert(){
 	var req_any_client=$("#req_any_client").val();
 	var area=$("#area").val();
 	
-	
-	
 	clientInsertStr =company_name+'<fd>'+company_address+'<fd>'+company_contact1+'<fd>'+company_contact2+'<fd>'+contact_person+'<fd>'+mobile_no+'<fd>'+numberOf_employee+'<fd>'+business_type+'<fd>'+using_sme_connection+'<fd>'+current_operator+'<fd>'+interestedGpSme+'<fd>'+sales_confirmation+'<fd>'+quantity+'<fd>'+delivery_date+'<fd>'+next_visit_date+'<fd>'+req_any_client+'<fd>'+distributor_Id+'<fd>'+distributor_Name+'<fd>'+distributor_area;
 	
 	url="#page_confirm_profile_insert";
 	$.mobile.navigate(url);
 }
-
-function selesConfirmation(){
-	var sales_confirmation=$("#sales_confirmation").val();
-		
-	if (sales_confirmation=='YES'){
-		$("#qtyYes").show();
-		$("#delDateYes").show();
-		$("#nvisitDateNo").hide();
-		$("#reqAnyClientNo").hide();
-	}else{
-		$("#qtyYes").hide();
-		$("#delDateYes").hide();
-		$("#nvisitDateNo").show();
-		$("#reqAnyClientNo").show();
-	}	
-}
-
 
 
 function lscProfileInsert(){
@@ -2979,8 +2960,8 @@ function prifileInfoNext(){
 	var cp_hobby=$("#cp_hobby").val();
 	var cp_trade_license=$("#cp_trade_license").val();
 	var cp_trade_licence_no=0;
-	var cp_vat_registration=$("#cp_vat_registration").val();
-	var cp_vat_reg_no=0;
+	var cp_vat_registration=0;
+	var cp_vat_reg_no=$("#cp_vat_reg_no").val();
 	
 	//alert(cp_name+'-'+cp_address+'-'+cp_marketid+'-'+cp_contact1+'-'+cp_contact2+'-'+cp_owner_name+'-'+cp_nid+'-'+cp_Passport+'-'+cp_dob+'-'+cp_dom+'-'+cp_kidsinfo+'-'+cp_trade_license+'-'+cp_trade_licence_no+'-'+cp_vat_registration+'-'+cp_vat_reg_no);
 	
@@ -3001,9 +2982,6 @@ function prifileInfoNext(){
 	var cp_barge_number=$("#cp_barge_number").val();
 	var cp_status=$("#cp_status").val();
 	var districtThana=$("#districtThana").val();
-	
-	
-	
 	//alert(cp_manager_name +'-'+cp_manager_cont_no+'-'+cp_starting_year+'-'+cp_Category+'-'+cp_lsc_covered+'-'+cp_monthly_sales_capacity+'-'+cp_monthly_sales+'-'+cp_shop_rent_own+'-'+cp_warehouse_capacity+'-'+cp_shop_size+'-'+cp_shop_front_size+'-'+cp_truck_number+'-'+cp_barge_number+'-'+cp_status+'-'+districtThana);
 	
 	/*var mustFlag=true;
@@ -3325,21 +3303,7 @@ function prifileInfoNext(){
 		
 	}//function
 	
-function selesConfirmationUPdate(){
-	var cp_vat_registration=$("#cp_vat_registration").val();
-	if (cp_vat_registration=='YES'){
-		$("#Qty_yes").show();
-		$("#del_date_yes").show();
-		$("#visit_date_no").hide();
-		$("#rec_client_no").hide();
-	}else{
-		$("#Qty_yes").hide();
-		$("#del_date_yes").hide();
-		$("#visit_date_no").show();
-		$("#rec_client_no").show();	
-	}
-		
-}
+
 //--------------------------Client profile: Profile Submit
 
 function lscProfileSubmit(){

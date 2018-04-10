@@ -43,17 +43,6 @@
 		$("#wait_image_profile_distributor_ret").hide();
 		
 		
-		$("#Qty_yes").hide();
-		$("#del_date_yes").hide();
-		$("#visit_date_no").hide();
-		$("#rec_client_no").hide();	
-		
-		$("#qtyYes").hide();
-		$("#delDateYes").hide();
-		$("#nvisitDateNo").hide();
-		$("#reqAnyClientNo").hide();
-		
-		
 		$("#wait_image_unschedule_market").hide();		
 		$("#btn_unschedule_market").show();
 		
@@ -918,7 +907,7 @@
                 						
                 <!-- List view-------------------->
                 <input  id="profile_client_id" data-type="search" placeholder="Search">	
-                <a onClick="distributorRetailerNextCProfileInsert();getLocationInfo()" style="float:right;" ><strong style="font-size:20px; ">+</strong> Add Client</a><br>	
+                <a onClick="distributorRetailerNextCProfileInsert()" style="float:right;" ><strong style="font-size:20px; ">+</strong> Add Client</a><br>	
                 <ul id="profile_client_id_lv" data-role="listview" data-filter="true" data-input="#profile_client_id" data-inset="true">
                 </ul>                
                 <!-- List ---->
@@ -1049,8 +1038,8 @@
     	  <td width="30%" class="prof_label" style="border-color: #F33;">Company Name<!--<font color="#C40000" style="font-size:20px">*</font>--></td><td><input type="text" name="" id="company_name"  value=""></td></tr>
         <tr>
           <td width="30%" class="prof_label">Company Address</td><td><input type="text" name="" id="company_address"  value=""></td></tr>        
-        <!--<tr><td width="30%" class="prof_label">Contact 1</td><td><input type="text" name="" id="company_contact1"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Contact 2</td><td><input type="text" name="" id="company_contact2"  value=""></td></tr>-->
+        <tr><td width="30%" class="prof_label">Contact 1</td><td><input type="text" name="" id="company_contact1"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">Contact 2</td><td><input type="text" name="" id="company_contact2"  value=""></td></tr>
         
         </tbody>
         
@@ -1090,20 +1079,16 @@
         </select>
         </td></tr>
         <tr><td width="30%" class="prof_label">Sales Confirmation</td><td>
-        <select name="sales_confirmation" id="sales_confirmation" data-native-menu="false" onChange="selesConfirmation()">
+        <select name="sales_confirmation" id="sales_confirmation" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
             <option value="NO" >NO</option>
         </select>
         </td></tr>
-        
-        <tr id="qtyYes"><td width="30%" class="prof_label">Quantity</td><td><input type="number" name="" id="quantity"  value=""></td></tr>
-        <tr id="delDateYes"><td width="30%" class="prof_label">Delivery Date</td><td><input type="date" name="" id="delivery_date_com"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        
-        
-        <tr id="nvisitDateNo"><td width="30%" class="prof_label">Next Visit Date</td><td><input type="date" name="" id="next_visit_date"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr id="reqAnyClientNo"><td width="30%" class="prof_label">Requirement if Any by Client</td><td><input type="text" name="" id="req_any_client"  value=""></td></tr>
-        
+        <tr><td width="30%" class="prof_label">Quantity</td><td><input type="number" name="" id="quantity"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">Delivery Date</td><td><input type="date" name="" id="delivery_date_com"  value="" placeholder="YYYY-MM-DD"></td></tr>
+        <tr><td width="30%" class="prof_label">Next Visit Date</td><td><input type="date" name="" id="next_visit_date"  value="" placeholder="YYYY-MM-DD"></td></tr>
+        <tr><td width="30%" class="prof_label">Requirement if Any by Client</td><td><input type="text" name="" id="req_any_client"  value=""></td></tr>
                      
     	</tbody>
         
@@ -1187,6 +1172,8 @@
     	  <td width="30%" class="prof_label" style="border-color: #F33;">Company Name</td><td><input type="text" name="" id="cp_name"  value=""></td></tr>
         <tr>
           <td width="30%" class="prof_label">Company Address</td><td><input type="text" name="" id="cp_address"  value=""></td></tr>        
+        <tr><td width="30%" class="prof_label">Contact 1</td><td><input type="text" name="" id="cp_contact1"  value="8801713454218"></td></tr>
+        <tr><td width="30%" class="prof_label">Contact 2</td><td><input type="text" name="" id="cp_contact2"  value="01713454218"></td></tr>
         
         </tbody>
         
@@ -1234,49 +1221,45 @@
         <input type="hidden" name="" id="cp_shop_rent_own"  value="">
         </td></tr>
         <tr><td width="30%" class="prof_label">Sales Confirmation</td><td>
-        <select name="cp_vat_registration" id="cp_vat_registration" data-native-menu="false" onChange="selesConfirmationUPdate()">
+        <select name="cp_vat_registration" id="cp_vat_registration" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
             <option value="NO" >NO</option>
         </select>
         </td></tr>
+        <tr><td width="30%" class="prof_label">Quantity</td><td><input type="number" name="" id="cp_monthly_sales_capacity"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">Delivery Date</td><td><input type="date" name="" id="cp_dob"  value="" placeholder="YYYY-MM-DD"></td></tr>
+        <tr><td width="30%" class="prof_label">Next Visit Date</td><td><input type="date" name="" id="cp_dom"  value="" placeholder="YYYY-MM-DD"></td></tr>
+        <tr><td width="30%" class="prof_label">Requirement if Any by Client</td><td><input type="text" name="" id="cp_owner_name"  value=""></td></tr>
         
-        <tr id="Qty_yes"><td width="30%" class="prof_label">Quantity</td><td><input type="number" name="" id="cp_monthly_sales_capacity"  value=""></td></tr>
-        <tr id="del_date_yes"><td width="30%" class="prof_label">Delivery Date</td><td><input type="date" name="" id="cp_dob"  value="" placeholder="YYYY-MM-DD"></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Monthly Sales</td>--><td><input type="hidden" name="" id="cp_monthly_sales"  value=""></td></tr>
         
-        <tr id="visit_date_no"><td width="30%" class="prof_label">Next Visit Date</td><td><input type="date" name="" id="cp_dom"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr id="rec_client_no"><td width="30%" class="prof_label">Requirement if Any by Client</td><td><input type="text" name="" id="cp_owner_name"  value=""></td></tr>
-        
-        <!--<tr><td width="30%" class="prof_label">Monthly Sales</td><td>--><input type="hidden" name="" id="cp_monthly_sales"  value=""><!--</td></tr>
-        
-        <tr><td width="30%" class="prof_label">Warehouse Capacity</td><td>--><input type="hidden" name="" id="cp_warehouse_capacity"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Shop Size (sqft)</td><td>--><input type="hidden" name="" id="cp_shop_size"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Shop Front Size (ft)</td><td>--><input type="hidden" name="" id="cp_shop_front_size"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Data1 (Number)</td><td>--><input type="hidden" name="" id="cp_truck_number"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Data2 (Number)</td><td>--><input type="hidden" name="" id="cp_barge_number"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Status<font color="#C40000" style="font-size:20px">*</font></td><td>-->
+        <tr><!--<td width="30%" class="prof_label">Warehouse Capacity</td>--><td><input type="hidden" name="" id="cp_warehouse_capacity"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Shop Size (sqft)</td>--><td><input type="hidden" name="" id="cp_shop_size"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Shop Front Size (ft)</td>--><td><input type="hidden" name="" id="cp_shop_front_size"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Data1 (Number)</td>--><td><input type="hidden" name="" id="cp_truck_number"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Data2 (Number)</td>--><td><input type="hidden" name="" id="cp_barge_number"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Status<font color="#C40000" style="font-size:20px">*</font></td>--><td>
         <!--<select name="cp_status" id="cp_status" data-native-menu="false">
             <option value="" >Select</option>
             <option value="ACTIVE" >ACTIVE</option>
             <option value="INACTIVE" >INACTIVE</option>
         </select>-->
         <input type="hidden" name="cp_status" id="cp_status"  value="ACTIVE">
-        <!--</td></tr>  -->   
-        <!--<tr><td width="30%" class="prof_label">Contact 1</td><td>--><input type="hidden" name="" id="cp_contact1"  value="0"><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Contact 2</td><td>--><input type="hidden" name="" id="cp_contact2"  value="0"><!--</td></tr>-->          
+        </td></tr>               
     	</tbody>
         
         <tbody bgcolor="#BFDFDF">        
         <!--<tr style="background-color:#CCC"><td colspan="2"><strong>Personal Info:</strong></td></tr>-->
         
-        <!--<tr><td width="30%" class="prof_label">NID</td><td>--><input type="hidden" name="" id="cp_nid"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Passport</td><td>--><input type="hidden" name="" id="cp_Passport"  value=""><!--</td></tr>
+        <tr><!--<td width="30%" class="prof_label">NID</td>--><td><input type="hidden" name="" id="cp_nid"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Passport</td>--><td><input type="hidden" name="" id="cp_Passport"  value=""></td></tr>
         
-        <tr><td width="30%" class="prof_label">KIDs Info</td><td>--><input type="hidden" name="" id="cp_kidsinfo"  value=""><!--</td></tr>
-        <tr><td width="30%" class="prof_label">Hobby</td><td>--><input type="hidden" name="" id="cp_hobby"  value=""><!--</td></tr>
+        <tr><!--<td width="30%" class="prof_label">KIDs Info</td>--><td><input type="hidden" name="" id="cp_kidsinfo"  value=""></td></tr>
+        <tr><!--<td width="30%" class="prof_label">Hobby</td>--><td><input type="hidden" name="" id="cp_hobby"  value=""></td></tr>
         
        
-        <tr><td width="30%" class="prof_label">VAT Reg.No</td><td>--><input type="hidden" name="" id="cp_vat_reg_no"  value=""><!--</td></tr>-->
+        <tr><!--<td width="30%" class="prof_label">VAT Reg.No</td>--><td><input type="hidden" name="" id="cp_vat_reg_no"  value=""></td></tr>
    		</tbody>
         
   	</table>
