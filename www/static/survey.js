@@ -2585,7 +2585,7 @@ function prifileInfoNextInsert(){
 	var delivery_date=$("#delivery_date_com").val();
 	var next_visit_date=$("#next_visit_date").val();
 	var req_any_client=$("#req_any_client").val();
-	var area=$("#area").val();
+	//var area=$("#area").val();
 	
 	
 	
@@ -2675,6 +2675,23 @@ function lscProfileInsert(){
 								$("#lat_p_insert").val('');
 								$("#long_p_insert").val('');								
 								$("#lscPhotoProfile_insert").val('');
+								
+								$("#company_name").val('');
+								$("#company_address").val('');
+								$("#contact_person").val('');
+								$("#mobile_no").val('');
+								$("#numberOf_employee").val('');
+								$("#business_type").val('');
+								$("#using_sme_connection").val('');
+								$("#current_operator").val('');
+								$("#interestedGpSme").val('');
+								$("#sales_confirmation").val('');
+								$("#quantity").val('');
+								$("#delivery_date_com").val('');
+								$("#next_visit_date").val('');
+								$("#req_any_client").val('');
+								
+								
 								//$("#myImageProfile").src='';								
     							document.getElementById('myImageProfile_insert').src = '';
 								
